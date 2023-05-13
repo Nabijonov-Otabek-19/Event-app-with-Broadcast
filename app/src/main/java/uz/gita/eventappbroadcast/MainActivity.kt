@@ -10,7 +10,7 @@ import uz.gita.eventappbroadcast.db.SharedPref
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var receiver: MyBroadCastReceiver
+    private lateinit var receiver: MyBroadCastReceiver
     private lateinit var binding: ActivityMainBinding
 
     private val sharedPref by lazy { SharedPref.getInstance() }
@@ -21,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
+
+            switchScreen.isChecked = sharedPref.screenAction
+            switchNetwork.isChecked = sharedPref.networkAction
+            switchPilot.isChecked = sharedPref.pilotAction
+            switchPower.isChecked = sharedPref.powerAction
+            switchBluetooth.isChecked = sharedPref.bluetoothAction
+
             switchScreen.setOnCheckedChangeListener { _, isChecked ->
                 sharedPref.screenAction = isChecked
             }
