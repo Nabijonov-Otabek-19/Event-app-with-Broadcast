@@ -3,16 +3,44 @@ package uz.gita.eventappbroadcast
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.content.IntentFilter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import uz.gita.eventappbroadcast.databinding.ActivityMainBinding
+import uz.gita.eventappbroadcast.db.SharedPref
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var receiver: MyBroadCastReceiver
+    private lateinit var binding: ActivityMainBinding
+
+    private val sharedPref by lazy { SharedPref.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.apply {
+            switchScreen.setOnCheckedChangeListener { _, isChecked ->
+                sharedPref.screenAction = isChecked
+            }
+
+            switchNetwork.setOnCheckedChangeListener { _, isChecked ->
+                sharedPref.networkAction = isChecked
+            }
+
+            switchPilot.setOnCheckedChangeListener { _, isChecked ->
+                sharedPref.pilotAction = isChecked
+            }
+
+            switchPower.setOnCheckedChangeListener { _, isChecked ->
+                sharedPref.powerAction = isChecked
+            }
+
+            switchBluetooth.setOnCheckedChangeListener { _, isChecked ->
+                sharedPref.bluetoothAction = isChecked
+            }
+        }
 
         receiver = MyBroadCastReceiver()
 
@@ -27,10 +55,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.registerReceiver(receiver, intentFilter)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        unregisterReceiver(receiver)
     }
 }
