@@ -1,10 +1,11 @@
-package uz.gita.eventappbroadcast
+package uz.gita.eventappbroadcast.broadcast
 
 import android.bluetooth.BluetoothAdapter
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
+import uz.gita.eventappbroadcast.R
 import uz.gita.eventappbroadcast.db.SharedPref
 
 class MyBroadCastReceiver : BroadcastReceiver() {
