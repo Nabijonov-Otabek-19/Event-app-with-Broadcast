@@ -1,18 +1,14 @@
 <resources>
-    <string name="app_name">Alert Event</string>
+    <string name="app_name">Events Alert</string>
 
-    <string name="screen_on">Screen on</string>
-    <string name="screen_off">Screen ff</string>
-    <string name="power_connected">Power connected</string>
-    <string name="power_disconnected">Power disconnected</string>
+    <string name="screen_on">Screen on/off</string>
+    <string name="power_connected">Power connection</string>
     <string name="device_storage_low">Device storage low</string>
-    <string name="airplane_mode_changed">Airplane mode changed</string>
+    <string name="airplane_mode_changed">Airplane mode on/off</string>
     <string name="battery_ok">Battery okay</string>
     <string name="battery_low">Battery low</string>
-    <string name="action_shutdown">Shutdown</string>
+    <string name="action_shutdown">Shut down</string>
     <string name="action_timezone_changed">Timezone changed</string>
     <string name="action_time_changed">Time changed</string>
-    <string name="action_date_changed">Date changed</string>
-    <string name="bluetooth_state_changed">Bluetooth state changed</string>
-    <string name="network">Network</string>
+    <string name="bluetooth_state_changed">Bluetooth on/off</string>
 </resources>

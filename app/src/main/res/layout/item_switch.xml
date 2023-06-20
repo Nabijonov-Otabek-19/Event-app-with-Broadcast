@@ -8,16 +8,19 @@
         android:id="@+id/itemSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="4dp"
+        android:layout_margin="4dp"
         android:background="@drawable/bg_switch"
         android:drawableStart="@drawable/ic_logo"
         android:drawablePadding="8dp"
+        android:elevation="8dp"
         android:padding="16dp"
         android:text="Title"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:thumbTint="@color/orange" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

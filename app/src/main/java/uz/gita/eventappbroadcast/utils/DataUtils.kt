@@ -18,7 +18,7 @@ data class SwitchData(
     val iconRes: Int,
     @StringRes
     val nameRes: Int,
-    val isEnabled : Boolean
+    val isEnabled: Boolean
 )
 
 
@@ -40,43 +40,43 @@ val allEvents = listOf(
 val allSwitchData = listOf(
     SwitchData(
         id = ActionEnum.SCREEN,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.screen,
         nameRes = R.string.screen_on,
         isEnabled = SharedPref.getInstance().screenAction
     ),
     SwitchData(
         id = ActionEnum.BLUETOOTH,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.bluetooth,
         nameRes = R.string.bluetooth_state_changed,
         isEnabled = SharedPref.getInstance().bluetoothAction
     ),
     SwitchData(
         id = ActionEnum.BATTERY_LOW,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.battery_low,
         nameRes = R.string.battery_low,
         isEnabled = SharedPref.getInstance().batteryLowAction
     ),
     SwitchData(
         id = ActionEnum.PILOT,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.pilot,
         nameRes = R.string.airplane_mode_changed,
         isEnabled = SharedPref.getInstance().pilotAction
     ),
     SwitchData(
         id = ActionEnum.POWER,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.power,
         nameRes = R.string.power_connected,
         isEnabled = SharedPref.getInstance().powerAction
     ),
     SwitchData(
         id = ActionEnum.SHUTDOWN,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.shutdown,
         nameRes = R.string.action_shutdown,
         isEnabled = SharedPref.getInstance().shutdownAction
     ),
     SwitchData(
         id = ActionEnum.BATTERY_OK,
-        iconRes = R.drawable.ic_logo,
+        iconRes = R.drawable.battery_ok,
         nameRes = R.string.battery_ok,
         isEnabled = SharedPref.getInstance().batteryOkAction
     )
