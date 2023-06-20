@@ -11,19 +11,18 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import uz.gita.eventappbroadcast.R
-import uz.gita.eventappbroadcast.allEvents
+import uz.gita.eventappbroadcast.utils.allEvents
 import uz.gita.eventappbroadcast.broadcast.MyBroadCastReceiver
-import uz.gita.eventappbroadcast.db.SharedPref
 
 class EventService : Service() {
 
     companion object {
-        val CHANNEL_ID = "EVENT"
+        val CHANNEL_ID = "EVENT_ID"
+        val CHANNEL_NAME = "EVENT"
         val STOP_SERVICE = "stop"
     }
 
     private val receiver = MyBroadCastReceiver()
-    private val sharedPref = SharedPref.getInstance()
 
     override fun onBind(p0: Intent?): IBinder? = null
 
@@ -51,7 +50,11 @@ class EventService : Service() {
     private fun createChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel =
-                NotificationChannel(CHANNEL_ID, "EVENT", NotificationManager.IMPORTANCE_DEFAULT)
+                NotificationChannel(
+                    CHANNEL_ID,
+                    CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
             channel.setSound(null, null)
             val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             service.createNotificationChannel(channel)
@@ -70,7 +73,8 @@ class EventService : Service() {
             )
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .addAction(R.drawable.ic_launcher_foreground, STOP_SERVICE, stopPendingIntent)
+            .addAction(R.drawable.app_logo, STOP_SERVICE, stopPendingIntent)
+            .setOngoing(true)
             .build()
 
         startForeground(1, notification)

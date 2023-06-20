@@ -5,8 +5,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.ConnectivityManager
 import uz.gita.eventappbroadcast.R
 import uz.gita.eventappbroadcast.db.SharedPref
+import uz.gita.eventappbroadcast.utils.logger
 
 class MyBroadCastReceiver : BroadcastReceiver() {
 
@@ -80,6 +82,18 @@ class MyBroadCastReceiver : BroadcastReceiver() {
                         }
                     }
                 }
+            }
+
+            Intent.ACTION_SHUTDOWN -> {
+                logger("Shutdown")
+            }
+
+            Intent.ACTION_TIME_CHANGED -> {
+                logger("Time changed")
+            }
+
+            Intent.ACTION_TIMEZONE_CHANGED -> {
+                logger("Time zone changed")
             }
         }
     }

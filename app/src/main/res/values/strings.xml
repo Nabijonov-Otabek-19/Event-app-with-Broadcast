@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Event app Broadcast</string>
+    <string name="app_name">Alert Event</string>
 
     <string name="screen_on">Screen on</string>
     <string name="screen_off">Screen ff</string>
@@ -13,4 +13,6 @@
     <string name="action_timezone_changed">Timezone changed</string>
     <string name="action_time_changed">Time changed</string>
     <string name="action_date_changed">Date changed</string>
+    <string name="bluetooth_state_changed">Bluetooth state changed</string>
+    <string name="network">Network</string>
 </resources>
