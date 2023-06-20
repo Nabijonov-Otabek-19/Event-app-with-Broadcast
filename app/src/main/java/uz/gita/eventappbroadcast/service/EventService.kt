@@ -6,10 +6,14 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import uz.gita.eventappbroadcast.R
+import uz.gita.eventappbroadcast.allEvents
+import uz.gita.eventappbroadcast.broadcast.MyBroadCastReceiver
+import uz.gita.eventappbroadcast.db.SharedPref
 
 class EventService : Service() {
 
@@ -18,23 +22,30 @@ class EventService : Service() {
         val STOP_SERVICE = "stop"
     }
 
+    private val receiver = MyBroadCastReceiver()
+    private val sharedPref = SharedPref.getInstance()
+
     override fun onBind(p0: Intent?): IBinder? = null
 
     override fun onCreate() {
         super.onCreate()
+
         createChannel()
+        startService()
+        registerAllEvents()
     }
 
-
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        startService()
-
-        return START_NOT_STICKY
+    private fun registerAllEvents() {
+        registerReceiver(receiver, IntentFilter().apply {
+            for (event in allEvents) {
+                addAction(event.intent)
+            }
+        })
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
+        this.unregisterReceiver(receiver)
     }
 
     private fun createChannel() {

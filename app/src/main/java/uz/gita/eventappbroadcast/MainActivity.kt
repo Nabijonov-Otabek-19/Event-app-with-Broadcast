@@ -3,11 +3,15 @@ package uz.gita.eventappbroadcast
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.eventappbroadcast.broadcast.MyBroadCastReceiver
 import uz.gita.eventappbroadcast.databinding.ActivityMainBinding
 import uz.gita.eventappbroadcast.db.SharedPref
+import uz.gita.eventappbroadcast.service.EventService
+import uz.gita.eventappbroadcast.utils.checkPermissions
+import uz.gita.eventappbroadcast.utils.logger
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +24,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            this.checkPermissions(
+                arrayListOf(
+                    android.Manifest.permission.READ_MEDIA_AUDIO,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                )
+            ) {
+                logger("Permission allowed")
+            }
+        }
+
+        val intent = Intent(this, EventService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.startForegroundService(intent)
+        } else {
+            this.startService(intent)
+        }
 
         binding.apply {
 
