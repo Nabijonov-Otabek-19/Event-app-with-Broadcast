@@ -38,9 +38,10 @@ val allEvents = listOf(
 )
 
 object Data {
-    val allSwitchData = arrayListOf<SwitchData>()
 
-    init {
+    fun allSwitchData(): ArrayList<SwitchData> {
+        val allSwitchData = arrayListOf<SwitchData>()
+
         allSwitchData.add(
             SwitchData(
                 id = ActionEnum.BLUETOOTH,
@@ -97,5 +98,7 @@ object Data {
                 isChecked = SharedPref.getInstance().batteryOkAction
             )
         )
+
+        return allSwitchData
     }
 }

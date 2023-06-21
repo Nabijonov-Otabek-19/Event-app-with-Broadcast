@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val sharedPref by lazy { SharedPref.getInstance() }
-    private val adapter by lazy { EventAdapter(Data.allSwitchData) }
+    private val adapter by lazy { EventAdapter(Data.allSwitchData()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
