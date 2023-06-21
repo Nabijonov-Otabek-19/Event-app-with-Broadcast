@@ -98,6 +98,22 @@ object Data {
                 isChecked = SharedPref.getInstance().batteryOkAction
             )
         )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.TIME,
+                iconRes = R.drawable.time,
+                nameRes = R.string.action_time_changed,
+                isChecked = SharedPref.getInstance().timeAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.TIME_ZONE,
+                iconRes = R.drawable.time_zone,
+                nameRes = R.string.action_timezone_changed,
+                isChecked = SharedPref.getInstance().timeZoneAction
+            )
+        )
 
         return allSwitchData
     }

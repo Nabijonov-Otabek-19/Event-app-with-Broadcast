@@ -34,7 +34,7 @@ class EventAdapter(private val dataList: List<SwitchData>) : Adapter<EventAdapte
 
                 val icon = dataList[adapterPosition].iconRes
                 val drawable = ContextCompat.getDrawable(binding.root.context, icon)
-                drawable?.setBounds(0, 0, 60, 60)
+                drawable?.setBounds(0, 0, 70, 70)
                 itemSwitch.setCompoundDrawables(
                     drawable,
                     null,

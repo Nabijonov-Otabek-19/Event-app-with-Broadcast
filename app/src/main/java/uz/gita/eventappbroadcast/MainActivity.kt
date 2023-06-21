@@ -36,18 +36,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val intent = Intent(this, EventService::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            this.startForegroundService(intent)
-        } else {
-            this.startService(intent)
-        }
-
         binding.apply {
             recycler.adapter = adapter
             recycler.layoutManager = LinearLayoutManager(this@MainActivity)
 
             adapter.setClickListener { id, isEnabled ->
+                startService()
                 when (id) {
                     ActionEnum.SCREEN -> sharedPref.screenAction = isEnabled
                     ActionEnum.PILOT -> sharedPref.pilotAction = isEnabled
@@ -60,6 +54,15 @@ class MainActivity : AppCompatActivity() {
                     ActionEnum.TIME_ZONE -> sharedPref.timeZoneAction = isEnabled
                 }
             }
+        }
+    }
+
+    private fun startService(){
+        val intent = Intent(this, EventService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.startForegroundService(intent)
+        } else {
+            this.startService(intent)
         }
     }
 }

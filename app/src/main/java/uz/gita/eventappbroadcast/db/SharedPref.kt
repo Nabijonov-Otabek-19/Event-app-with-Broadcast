@@ -11,7 +11,6 @@ class SharedPref {
         private const val SHARED_PREF = "shared_pref"
 
         private const val SCREEN_ACTION = "screen_action"
-        private const val NETWORK_ACTION = "network_action"
         private const val POWER_ACTION = "power_action"
         private const val PILOT_ACTION = "pilot_action"
         private const val BLUETOOTH_ACTION = "bluetooth_action"
@@ -20,6 +19,7 @@ class SharedPref {
         private const val BATTERY_OK_ACTION = "battery_ok_action"
         private const val TIME_ACTION = "time_action"
         private const val TIME_ZONE_ACTION = "time_zone_action"
+        private const val DATE_ACTION = "date_action"
 
         private lateinit var pref: SharedPreferences
         private lateinit var editor: SharedPreferences.Editor
@@ -39,10 +39,6 @@ class SharedPref {
     var screenAction: Boolean
         get() = pref.getBoolean(SCREEN_ACTION, false)
         set(value) = editor.putBoolean(SCREEN_ACTION, value).apply()
-
-    var networkAction: Boolean
-        get() = pref.getBoolean(NETWORK_ACTION, false)
-        set(value) = editor.putBoolean(NETWORK_ACTION, value).apply()
 
     var powerAction: Boolean
         get() = pref.getBoolean(POWER_ACTION, false)
@@ -75,4 +71,8 @@ class SharedPref {
     var timeZoneAction: Boolean
         get() = pref.getBoolean(TIME_ZONE_ACTION, false)
         set(value) = editor.putBoolean(TIME_ZONE_ACTION, value).apply()
+
+    var dateAction: Boolean
+        get() = pref.getBoolean(DATE_ACTION, false)
+        set(value) = editor.putBoolean(DATE_ACTION, value).apply()
 }

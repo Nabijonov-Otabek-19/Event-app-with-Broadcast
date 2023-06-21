@@ -5,10 +5,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
-import android.net.ConnectivityManager
 import uz.gita.eventappbroadcast.R
 import uz.gita.eventappbroadcast.db.SharedPref
-import uz.gita.eventappbroadcast.utils.logger
 
 class MyBroadCastReceiver : BroadcastReceiver() {
 
@@ -61,8 +59,10 @@ class MyBroadCastReceiver : BroadcastReceiver() {
             }
 
             Intent.ACTION_BATTERY_LOW -> {
-                audio = MediaPlayer.create(context, R.raw.battery_low)
-                audio.start()
+                if (sharedPref.batteryLowAction) {
+                    audio = MediaPlayer.create(context, R.raw.battery_low)
+                    audio.start()
+                }
             }
 
             BluetoothAdapter.ACTION_STATE_CHANGED -> {
@@ -85,15 +85,31 @@ class MyBroadCastReceiver : BroadcastReceiver() {
             }
 
             Intent.ACTION_SHUTDOWN -> {
-                logger("Shutdown")
+                if (sharedPref.shutdownAction) {
+                    audio = MediaPlayer.create(context, R.raw.shutdown)
+                    audio.start()
+                }
             }
 
             Intent.ACTION_TIME_CHANGED -> {
-                logger("Time changed")
+                if (sharedPref.timeAction) {
+                    audio = MediaPlayer.create(context, R.raw.time_changed)
+                    audio.start()
+                }
             }
 
             Intent.ACTION_TIMEZONE_CHANGED -> {
-                logger("Time zone changed")
+                if (sharedPref.timeZoneAction) {
+                    audio = MediaPlayer.create(context, R.raw.time_zone_changed)
+                    audio.start()
+                }
+            }
+
+            Intent.ACTION_DATE_CHANGED -> {
+                if (sharedPref.dateAction) {
+                    audio = MediaPlayer.create(context, R.raw.date_changed)
+                    audio.start()
+                }
             }
         }
     }
