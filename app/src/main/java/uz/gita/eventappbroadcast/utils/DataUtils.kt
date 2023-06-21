@@ -37,47 +37,65 @@ val allEvents = listOf(
     Event(intent = BluetoothAdapter.ACTION_STATE_CHANGED)
 )
 
-val allSwitchData = listOf(
-    SwitchData(
-        id = ActionEnum.SCREEN,
-        iconRes = R.drawable.screen,
-        nameRes = R.string.screen_on,
-        isChecked = SharedPref.getInstance().screenAction
-    ),
-    SwitchData(
-        id = ActionEnum.BLUETOOTH,
-        iconRes = R.drawable.bluetooth,
-        nameRes = R.string.bluetooth_state_changed,
-        isChecked = SharedPref.getInstance().bluetoothAction
-    ),
-    SwitchData(
-        id = ActionEnum.BATTERY_LOW,
-        iconRes = R.drawable.battery_low,
-        nameRes = R.string.battery_low,
-        isChecked = SharedPref.getInstance().batteryLowAction
-    ),
-    SwitchData(
-        id = ActionEnum.PILOT,
-        iconRes = R.drawable.pilot,
-        nameRes = R.string.airplane_mode_changed,
-        isChecked = SharedPref.getInstance().pilotAction
-    ),
-    SwitchData(
-        id = ActionEnum.POWER,
-        iconRes = R.drawable.power,
-        nameRes = R.string.power_connected,
-        isChecked = SharedPref.getInstance().powerAction
-    ),
-    SwitchData(
-        id = ActionEnum.SHUTDOWN,
-        iconRes = R.drawable.shutdown,
-        nameRes = R.string.action_shutdown,
-        isChecked = SharedPref.getInstance().shutdownAction
-    ),
-    SwitchData(
-        id = ActionEnum.BATTERY_OK,
-        iconRes = R.drawable.battery_ok,
-        nameRes = R.string.battery_ok,
-        isChecked = SharedPref.getInstance().batteryOkAction
-    )
-)
+object Data {
+    val allSwitchData = arrayListOf<SwitchData>()
+
+    init {
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.BLUETOOTH,
+                iconRes = R.drawable.bluetooth,
+                nameRes = R.string.bluetooth_state_changed,
+                isChecked = SharedPref.getInstance().bluetoothAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.BATTERY_LOW,
+                iconRes = R.drawable.battery_low,
+                nameRes = R.string.battery_low,
+                isChecked = SharedPref.getInstance().batteryLowAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.PILOT,
+                iconRes = R.drawable.pilot,
+                nameRes = R.string.airplane_mode_changed,
+                isChecked = SharedPref.getInstance().pilotAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.SCREEN,
+                iconRes = R.drawable.screen,
+                nameRes = R.string.screen_on,
+                isChecked = SharedPref.getInstance().screenAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.POWER,
+                iconRes = R.drawable.power,
+                nameRes = R.string.power_connected,
+                isChecked = SharedPref.getInstance().powerAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.SHUTDOWN,
+                iconRes = R.drawable.shutdown,
+                nameRes = R.string.action_shutdown,
+                isChecked = SharedPref.getInstance().shutdownAction
+            )
+        )
+        allSwitchData.add(
+            SwitchData(
+                id = ActionEnum.BATTERY_OK,
+                iconRes = R.drawable.battery_ok,
+                nameRes = R.string.battery_ok,
+                isChecked = SharedPref.getInstance().batteryOkAction
+            )
+        )
+    }
+}

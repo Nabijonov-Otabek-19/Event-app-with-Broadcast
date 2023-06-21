@@ -10,7 +10,7 @@ import uz.gita.eventappbroadcast.data.ActionEnum
 import uz.gita.eventappbroadcast.databinding.ActivityMainBinding
 import uz.gita.eventappbroadcast.db.SharedPref
 import uz.gita.eventappbroadcast.service.EventService
-import uz.gita.eventappbroadcast.utils.allSwitchData
+import uz.gita.eventappbroadcast.utils.Data
 import uz.gita.eventappbroadcast.utils.checkPermissions
 import uz.gita.eventappbroadcast.utils.logger
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val sharedPref by lazy { SharedPref.getInstance() }
-    private val adapter by lazy { EventAdapter(allSwitchData) }
+    private val adapter by lazy { EventAdapter(Data.allSwitchData) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,22 +44,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.apply {
-
             recycler.adapter = adapter
             recycler.layoutManager = LinearLayoutManager(this@MainActivity)
 
             adapter.setClickListener { id, isEnabled ->
                 when (id) {
-                    ActionEnum.SCREEN -> {
-                        sharedPref.screenAction = isEnabled
-                        logger("Screen state = ${sharedPref.screenAction}")
-                    }
-
-                    ActionEnum.PILOT -> {
-                        sharedPref.pilotAction = isEnabled
-                        logger("Pilot state = ${sharedPref.pilotAction}")
-                    }
-
+                    ActionEnum.SCREEN -> sharedPref.screenAction = isEnabled
+                    ActionEnum.PILOT -> sharedPref.pilotAction = isEnabled
                     ActionEnum.POWER -> sharedPref.powerAction = isEnabled
                     ActionEnum.BLUETOOTH -> sharedPref.bluetoothAction = isEnabled
                     ActionEnum.SHUTDOWN -> sharedPref.shutdownAction = isEnabled
