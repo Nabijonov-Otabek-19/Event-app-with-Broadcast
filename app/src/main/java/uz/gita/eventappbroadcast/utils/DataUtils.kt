@@ -18,7 +18,7 @@ data class SwitchData(
     val iconRes: Int,
     @StringRes
     val nameRes: Int,
-    val isEnabled: Boolean
+    val isChecked: Boolean
 )
 
 
@@ -42,42 +42,42 @@ val allSwitchData = listOf(
         id = ActionEnum.SCREEN,
         iconRes = R.drawable.screen,
         nameRes = R.string.screen_on,
-        isEnabled = SharedPref.getInstance().screenAction
+        isChecked = SharedPref.getInstance().screenAction
     ),
     SwitchData(
         id = ActionEnum.BLUETOOTH,
         iconRes = R.drawable.bluetooth,
         nameRes = R.string.bluetooth_state_changed,
-        isEnabled = SharedPref.getInstance().bluetoothAction
+        isChecked = SharedPref.getInstance().bluetoothAction
     ),
     SwitchData(
         id = ActionEnum.BATTERY_LOW,
         iconRes = R.drawable.battery_low,
         nameRes = R.string.battery_low,
-        isEnabled = SharedPref.getInstance().batteryLowAction
+        isChecked = SharedPref.getInstance().batteryLowAction
     ),
     SwitchData(
         id = ActionEnum.PILOT,
         iconRes = R.drawable.pilot,
         nameRes = R.string.airplane_mode_changed,
-        isEnabled = SharedPref.getInstance().pilotAction
+        isChecked = SharedPref.getInstance().pilotAction
     ),
     SwitchData(
         id = ActionEnum.POWER,
         iconRes = R.drawable.power,
         nameRes = R.string.power_connected,
-        isEnabled = SharedPref.getInstance().powerAction
+        isChecked = SharedPref.getInstance().powerAction
     ),
     SwitchData(
         id = ActionEnum.SHUTDOWN,
         iconRes = R.drawable.shutdown,
         nameRes = R.string.action_shutdown,
-        isEnabled = SharedPref.getInstance().shutdownAction
+        isChecked = SharedPref.getInstance().shutdownAction
     ),
     SwitchData(
         id = ActionEnum.BATTERY_OK,
         iconRes = R.drawable.battery_ok,
         nameRes = R.string.battery_ok,
-        isEnabled = SharedPref.getInstance().batteryOkAction
+        isChecked = SharedPref.getInstance().batteryOkAction
     )
 )

@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val sharedPref by lazy { SharedPref.getInstance() }
-
     private val adapter by lazy { EventAdapter(allSwitchData) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,8 +50,16 @@ class MainActivity : AppCompatActivity() {
 
             adapter.setClickListener { id, isEnabled ->
                 when (id) {
-                    ActionEnum.SCREEN -> sharedPref.screenAction = isEnabled
-                    ActionEnum.PILOT -> sharedPref.pilotAction = isEnabled
+                    ActionEnum.SCREEN -> {
+                        sharedPref.screenAction = isEnabled
+                        logger("Screen state = ${sharedPref.screenAction}")
+                    }
+
+                    ActionEnum.PILOT -> {
+                        sharedPref.pilotAction = isEnabled
+                        logger("Pilot state = ${sharedPref.pilotAction}")
+                    }
+
                     ActionEnum.POWER -> sharedPref.powerAction = isEnabled
                     ActionEnum.BLUETOOTH -> sharedPref.bluetoothAction = isEnabled
                     ActionEnum.SHUTDOWN -> sharedPref.shutdownAction = isEnabled
